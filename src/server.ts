@@ -46,12 +46,12 @@ export class ProvaTesteComponent {
 	buscarLivro(livro: string, genero: string): number {
 		let indiceLivro: number = -1;
 		for (let index = 0; index < this.listLivros.length; index++) {
-			const livro = this.listLivros[index];
-			/**
-			 * Implemente a validação onde retorne o Indice do Livro caso encontre um com mesmo nome e genero
-			 */
+			const livroAtual = this.listLivros[index];
+			if (livroAtual.nome === livro && livroAtual.genero === genero) {
+				return indiceLivro;
+			}
+			return 0;
 		}
-		return indiceLivro;
 	}
 
 	listarLivrosFantasia(): string {
