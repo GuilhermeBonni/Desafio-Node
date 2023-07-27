@@ -55,9 +55,9 @@ export class ProvaTesteComponent {
 	}
 
 	listarLivrosFantasia(): string {
-		/**
-		 * Retorne uma String contendo o nome de todos os Livros que são de fantasia.
-		 */
+		const livrosFantasia = this.listLivros.filter((livro: Livro) => livro.genero === 'Fantasia');
+		const nomesLivrosFantasia = livrosFantasia.map((livro: Livro) => livro.nome);
+		return nomesLivrosFantasia.join(', ');
 	}
 }
 
