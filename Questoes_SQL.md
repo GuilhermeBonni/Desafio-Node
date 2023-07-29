@@ -3,8 +3,9 @@
 Para as perguntas a seguir considere as seguintes tabelas:
 
 ## Tabela Pessoas
+
 | Codigo | Nome    | Idade | Pais_Origem |
-|--------|---------|-------|-------------|
+| ------ | ------- | ----- | ----------- |
 | 01     | Alan    | 30    | Espanha     |
 | 02     | Claudia | 25    | Portugal    |
 | 03     | John    | 12    | Canadá      |
@@ -21,7 +22,7 @@ Para as perguntas a seguir considere as seguintes tabelas:
 ## Tabela Paises_Visitados
 
 | Codigo_Pessoa | Pais_Visitado |
-|---------------|---------------|
+| ------------- | ------------- |
 | 01            | França        |
 | 03            | Espanha       |
 | 03            | Portugal      |
@@ -40,30 +41,54 @@ Para as perguntas a seguir considere as seguintes tabelas:
 Com base nas tabelas:
 
 1. Monte uma consulta que retorne o nome e idade das pessoas maiores de idade ordenado pela idade em ordem decrescente;
-```SQL
 
+```SQL
+SELECT Nome, Idade FROM Pessoas
+WHERE Idade >= 18 ORDER BY Idade DESC;
 ```
+
 2. Monte uma consulta que retorne a idade mais alta na tabela;
-```SQL
 
+```SQL
+SELECT MAX(Idade) FROM Pessoas;
 ```
+
 3. Atualize o nome de todas as pessoas que são menores de idades adicionando “ ( menor de idade ) “ ao nome dela;
-```SQL
 
+```SQL
+UPDATE Pessoas
+SET Nome = CONCAT(nome, ' ( menor de idade ) ')
+WHERE Idade < 18;
 ```
+
 4. Monte o comando para remover da tabela todas as pessoas que são do Brasil;
-```SQL
 
+```SQL
+DELETE FROM Pessoas
+WHERE Pais_Origem = 'Brasil'
 ```
+
 5. Quais pessoas já visitaram a França? Monte a consulta que retornará o nome delas;
-```SQL
 
+```SQL
+SELECT p.Nome FROM Pessoas p
+JOIN Paises_Visitados pv ON p.Codigo = pv.Codigo_Pessoa
+WHERE pv.Pais_Visitado = 'França';
 ```
+
+Segundo a consulta do SQL, as pessoas que visitaram a França foram o Alan e a Flávia.
+
 6. Quais são as pessoas que não visitaram nenhum pais? Monte a consulta retornando o nome delas;
-```SQL
 
+```SQL
+SELECT p.Nome
+FROM Pessoas p
+LEFT JOIN Paises_Visitados pv ON p.Codigo = pv.Codigo_Pessoa
+WHERE pv.Codigo_Pessoa IS NULL;
 ```
 
+Segundo a consulta do SQL, as pessoas que não visitaram nenhum pais foram a Isabela e o Marcos.
 
 ## Observações
+
 Utilize os espaços para escrever os comandos SQL.
