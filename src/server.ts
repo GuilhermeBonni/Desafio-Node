@@ -15,12 +15,15 @@ export class ProvaTesteComponent {
 		this.initLivros();
 		this.criarUmNovoLivro('Arquitetura Limpa', 'Tecnologia');
 		this.criarUmNovoLivro('Harry Potter e a Camara secreta', 'Fantasia');
+		//Comprovando a funcionalidade da validação de nao permitir repetido
+		this.criarUmNovoLivro('Harry Potter e a Camara secreta', 'Fantasia');
 		this.criarUmNovoLivro('WildCards', 'Esportes');
 		this.criarUmNovoLivro('O Trono do Sol', 'Fantasia');
 		console.log(this.listarLivrosFantasia());
 	}
 
 	initLivros() {
+		//Comprovando a funcionalidade da validação de nao permitir repetido
 		this.listLivros.push({ id: 0, nome: 'Código Limpo', genero: 'Tecnologia' });
 		this.listLivros.push({ id: 1, nome: 'Senhor do Anéis', genero: 'Fantasia' });
 		this.listLivros.push({ id: 2, nome: 'WildCards', genero: 'Fantasia' });
@@ -50,8 +53,8 @@ export class ProvaTesteComponent {
 			if (livroAtual.nome === livro && livroAtual.genero === genero) {
 				return indiceLivro;
 			}
-			return 0;
 		}
+		return 0;
 	}
 
 	listarLivrosFantasia(): string {
